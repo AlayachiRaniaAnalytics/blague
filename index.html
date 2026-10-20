@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Surprise 😄</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    text-align:center;
+    color:white;
+}
+
+h1{
+    font-size:70px;
+    animation:bounce 1s infinite alternate;
+}
+
+p{
+    font-size:24px;
+}
+
+button{
+    padding:15px 30px;
+    font-size:20px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:#ffcc00;
+}
+
+@keyframes bounce{
+    from{transform:translateY(0);}
+    to{transform:translateY(-20px);}
+}
+
+.emoji{
+    position:absolute;
+    font-size:40px;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-100px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🎉 Félicitations ! 🎉</h1>
+    <p>Vous avez gagné 1 milliard d'euros ! 😂</p>
+
+    <button onclick="showMessage()">
+        Réclamer mon argent 💸
+    </button>
+</div>
+
+<script>
+
+function showMessage(){
+    alert("😆 Dommage ! C'était une blague !");
+}
+
+const emojis=["😂","🎉","💸","🦄","🍕","😎"];
+
+setInterval(()=>{
+
+    const emoji=document.createElement("div");
+
+    emoji.classList.add("emoji");
+
+    emoji.innerHTML=
+        emojis[Math.floor(Math.random()*emojis.length)];
+
+    emoji.style.left=Math.random()*100+"vw";
+
+    document.body.appendChild(emoji);
+
+    setTimeout(()=>{
+        emoji.remove();
+    },5000);
+
+},300);
+
+</script>
+
+</body>
+</html>
